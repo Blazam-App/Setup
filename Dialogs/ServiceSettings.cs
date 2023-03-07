@@ -21,7 +21,10 @@ namespace WixSharpSetup
 
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
-
+            if (InstallationType.installationType == "SERVICE")
+            {
+                Shell.GoNext();
+            }
             //resolve all Control.Text cases with embedded MSI properties (e.g. 'ProductName') and *.wxl file entries
             base.Localize();
         }

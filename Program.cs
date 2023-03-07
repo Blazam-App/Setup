@@ -1,5 +1,4 @@
-﻿using BLAZAM.Server;
-using Microsoft.Deployment.WindowsInstaller;
+﻿using Microsoft.Deployment.WindowsInstaller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +15,7 @@ namespace Setup
 {
     internal class Program
     {
-        private const string SourcePath = @"..\BLAZAM\bin\Release\net6.0\publish\";
+        private const string SourcePath = @"..\BLAZAM\BLAZAM\bin\Release\net6.0\publish\";
         public static string DestinationPath = @"%ProgramFiles%\Blazam Server\";
         public static File service;
 
@@ -92,6 +91,7 @@ namespace Setup
                                             .Add<WixSharpSetup.AspHostingDialog>()
                                             .Add<WixSharpSetup.NetCoreDialog>()
                                             .Add<Setup.InstallDirDialog>()
+                                          .Add<WixSharpSetup.DatabaseTypeDialog>()
                                             .Add<WixSharpSetup.DatabaseDialog>()
                                             .Add<WixSharpSetup.ConfirmInstallDialog>()
                                             .Add<Setup.ProgressDialog>()

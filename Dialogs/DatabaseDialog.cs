@@ -1,4 +1,5 @@
 
+using Microsoft.Deployment.WindowsInstaller;
 using Setup;
 using System;
 using System.Data.SqlClient;
@@ -15,7 +16,8 @@ namespace WixSharpSetup
     {
         string appSettingsPath = Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Blazam Server\appsettings.json");
         public static bool Skipped = false;
-
+        public ManagedForm Host;
+        ISession session => Host?.Runtime.Session;
         public DatabaseDialog()
         {
             //NOTE: If this assembly is compiled for v4.0.30319 runtime, it may not be compatible with the MSI hosted CLR.
@@ -26,6 +28,7 @@ namespace WixSharpSetup
 
         void dialog_Load(object sender, EventArgs e)
         {
+            Host = this;
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
             
@@ -37,10 +40,13 @@ namespace WixSharpSetup
                     Shell.GoNext();
                 }
             }
-            else
-            {
 
+            if (session.Property("DATABASE_TYPE") == "SQLite")
+            {
+                Shell.GoTo<DatabaseDialog>();
             }
+
+
             ErrorBox.Text = appSettingsPath + System.IO.File.Exists(appSettingsPath).ToString() + InstallationType.installationType;
             next.Enabled = false;
             CustomPanel.Visible = false;

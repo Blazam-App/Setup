@@ -39,9 +39,6 @@
     <Page Include="Dialogs\WelcomeDialog.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLAZAMInstallerActions\BLAZAMInstallerActions.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Configuration.Install" />
