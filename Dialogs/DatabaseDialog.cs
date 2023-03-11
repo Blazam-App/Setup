@@ -34,25 +34,36 @@ namespace WixSharpSetup
             
             if (InstallationType.installationType == "SERVICE")
             {
-                if (System.IO.File.Exists(appSettingsPath))
+                
+               /* if (System.IO.File.Exists(appSettingsPath))
                 {
                     Skipped = true;
                     Shell.GoNext();
-                }
+                }*/
             }
 
             if (session.Property("DATABASE_TYPE") == "SQLite")
             {
-                Shell.GoTo<DatabaseDialog>();
+                Shell.GoTo<DatabaseFilePathDialog>();
             }
 
 
-            ErrorBox.Text = appSettingsPath + System.IO.File.Exists(appSettingsPath).ToString() + InstallationType.installationType;
+            ErrorBox.Text = appSettingsPath + System.IO.File.Exists(appSettingsPath).ToString() + 
+                InstallationType.installationType;
             next.Enabled = false;
             CustomPanel.Visible = false;
             ErrorBox.Visible = true;
-            //resolve all Control.Text cases with embedded MSI properties (e.g. 'ProductName') and *.wxl file entries
-            base.Localize();
+
+            if (session.Property("DATABASE_TYPE") == "MYSQL")
+            {
+                PortBox.Value = 3306;
+                testButton.Visible = false;
+                next.Enabled = true;
+                ErrorBox.Text = "The installer is incapable of checking MySQL connection settings." +
+                    " Please test the settings and verify yourself.";
+            }
+                //resolve all Control.Text cases with embedded MSI properties (e.g. 'ProductName') and *.wxl file entries
+                base.Localize();
         }
 
         void back_Click(object sender, EventArgs e)
@@ -83,18 +94,34 @@ namespace WixSharpSetup
                 ErrorBox.Text = "Database name must be provided!";
                 return;
             }
-            string connString = $"Data Source={ServerBox.Text},{PortBox.Value};Database={DatabaseBox.Text};Persist Security Info=True;Integrated Security=False;User ID={UsernameBox.Text};Password={PasswordBox.Text};Connection Timeout=10;TrustServerCertificate=True;";
+            string connString = $"Server={ServerBox.Text},{PortBox.Value};Database={DatabaseBox.Text};User ID={UsernameBox.Text};Password={PasswordBox.Text};Connection Timeout=10;";
             ErrorBox.Text = "Testing connection please wait...";
             try
             {
-                SqlConnection testConn = new SqlConnection(connString);
-                testConn.Open();
-                if(testConn.State==System.Data.ConnectionState.Open)
+                if (session.Property("DATABASE_TYPE") == "MYSQL")
                 {
-                    ErrorBox.Text = "Test Successful \r\n"
-                        + "SQL Version: "+testConn.ServerVersion;
+
+                    SqlConnection testConn = new SqlConnection(connString);
+                    testConn.Open();
+                    if (testConn.State == System.Data.ConnectionState.Open)
+                    {
+                        ErrorBox.Text = "Test Successful \r\n"
+                            + "MySQL Version: " + testConn.ServerVersion;
+                    }
+                    testConn.Close();
+
                 }
-                testConn.Close();
+                else
+                {
+                    SqlConnection testConn = new SqlConnection(connString);
+                    testConn.Open();
+                    if (testConn.State == System.Data.ConnectionState.Open)
+                    {
+                        ErrorBox.Text = "Test Successful \r\n"
+                            + "SQL Version: " + testConn.ServerVersion;
+                    }
+                    testConn.Close();
+                }
                 next.Enabled = true;
                 NeedTestLabel.Visible = false;
             }

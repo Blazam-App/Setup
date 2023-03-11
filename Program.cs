@@ -53,9 +53,20 @@ namespace Setup
         {
 
             var project = new ManagedProject("BLAZAM",
-                              new ManagedAction(ApplyAppSettingsAction.Apply, Return.check, When.After, Step.InstallFinalize, Condition.NOT_Installed),
+                              new ManagedAction(
+                                      SetupWebHost.Setup,
+                                      Return.check,
+                                      When.Before,
+                                      Step.InstallInitialize,
+                                      Condition.NOT_Installed),
+                              new ManagedAction(
+                                      ApplyAppSettingsAction.Apply,
+                                      Return.check,
+                                      When.After,
+                                      Step.InstallFinalize, 
+                                      Condition.NOT_Installed),
                               new Dir(DestinationPath,
-                                  new Files(SourcePath+"*"),
+                                  new Files(SourcePath + "*"),
                                   service = new File(SourcePath + "blazam.exe")));
             project.ManagedUI = ManagedUI.Default;
             project.ControlPanelInfo.NoModify = true;
@@ -68,7 +79,7 @@ namespace Setup
             project.UpgradeCode = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
             project.ProductId = Guid.NewGuid();
             project.EnableUninstallFullUI();
-           // project.GenerateProductGuids();
+            // project.GenerateProductGuids();
 
             service.ServiceInstaller = new ServiceInstaller
             {
@@ -78,7 +89,7 @@ namespace Setup
                 StopOn = SvcEvent.InstallUninstall_Wait,
                 RemoveOn = SvcEvent.Uninstall_Wait
             };
-            
+
             // project.ManagedUI = ManagedUI.DefaultWpf; // all stock UI dialogs
 
             //custom set of UI WPF dialogs
@@ -87,9 +98,11 @@ namespace Setup
             project.ManagedUI.InstallDialogs.Add<Setup.WelcomeDialog>()
                                             .Add<Setup.LicenceDialog>()
                                             .Add<WixSharpSetup.InstallationType>()
+                                            .Add<WixSharpSetup.NetCoreDialog>()
                                             .Add<WixSharpSetup.ServiceSettings>()
                                             .Add<WixSharpSetup.AspHostingDialog>()
-                                            .Add<WixSharpSetup.NetCoreDialog>()
+                                            .Add<WixSharpSetup.IISSettingsDialog>()
+
                                             .Add<Setup.InstallDirDialog>()
                                           .Add<WixSharpSetup.DatabaseTypeDialog>()
                                             .Add<WixSharpSetup.DatabaseDialog>()
@@ -104,7 +117,7 @@ namespace Setup
 
             //project.SourceBaseDir = "<input dir path>";
             //project.OutDir = "<output dir path>";
-            
+
 
 
             return project.BuildMsi();

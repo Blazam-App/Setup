@@ -23,10 +23,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="WixSharp" Version="1.20.0" />
-    <PackageReference Include="WixSharp.bin" Version="1.20.0" />
+    <PackageReference Include="WixSharp" Version="1.20.3" />
+    <PackageReference Include="WixSharp.bin" Version="1.20.3" />
     <PackageReference Include="WixSharp.wix.bin" Version="3.11.2" />
-    <PackageReference Include="WixSharp.WPF" Version="1.20.0" />
+    <PackageReference Include="WixSharp.WPF" Version="1.20.3" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Dialogs\ExitDialog.xaml" />
@@ -42,9 +42,12 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Dialogs\NetCoreDialog.cs">

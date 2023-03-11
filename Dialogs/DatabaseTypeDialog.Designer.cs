@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.sqliteRadioButton = new System.Windows.Forms.RadioButton();
             this.sqlRadioButton = new System.Windows.Forms.RadioButton();
+            this.mysqlRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -168,9 +169,22 @@
             this.sqlRadioButton.UseVisualStyleBackColor = true;
             this.sqlRadioButton.CheckedChanged += new System.EventHandler(this.sqlRadioButton_CheckedChanged);
             // 
+            // mysqlRadioButton
+            // 
+            this.mysqlRadioButton.AutoSize = true;
+            this.mysqlRadioButton.Location = new System.Drawing.Point(29, 137);
+            this.mysqlRadioButton.Name = "mysqlRadioButton";
+            this.mysqlRadioButton.Size = new System.Drawing.Size(213, 17);
+            this.mysqlRadioButton.TabIndex = 14;
+            this.mysqlRadioButton.TabStop = true;
+            this.mysqlRadioButton.Text = "MySQL Database (MariaDB Compatible)";
+            this.mysqlRadioButton.UseVisualStyleBackColor = true;
+            this.mysqlRadioButton.CheckedChanged += new System.EventHandler(this.mysqlRadioButton_CheckedChanged);
+            // 
             // DatabaseTypeDialog
             // 
             this.ClientSize = new System.Drawing.Size(494, 361);
+            this.Controls.Add(this.mysqlRadioButton);
             this.Controls.Add(this.sqlRadioButton);
             this.Controls.Add(this.sqliteRadioButton);
             this.Controls.Add(this.label3);
@@ -202,5 +216,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton sqliteRadioButton;
         private System.Windows.Forms.RadioButton sqlRadioButton;
+        private System.Windows.Forms.RadioButton mysqlRadioButton;
     }
 }

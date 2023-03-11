@@ -55,5 +55,10 @@ namespace WixSharpSetup
             session["DATABASE_TYPE"] = "SQL";
 
         }
+
+        private void mysqlRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            session["DATABASE_TYPE"] = "MYSQL";
+        }
     }
 }

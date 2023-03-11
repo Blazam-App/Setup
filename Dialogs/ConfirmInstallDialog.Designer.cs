@@ -37,6 +37,12 @@
             this.next = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.installPath = new System.Windows.Forms.Label();
+            this.databaseType = new System.Windows.Forms.Label();
+            this.installType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -140,9 +146,66 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Installation is ready to begin.";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Install Type:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(29, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Database Type:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(29, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Install Path:";
+            // 
+            // installPath
+            // 
+            this.installPath.AutoSize = true;
+            this.installPath.Location = new System.Drawing.Point(130, 156);
+            this.installPath.Name = "installPath";
+            this.installPath.Size = new System.Drawing.Size(0, 13);
+            this.installPath.TabIndex = 17;
+            // 
+            // databaseType
+            // 
+            this.databaseType.AutoSize = true;
+            this.databaseType.Location = new System.Drawing.Point(130, 134);
+            this.databaseType.Name = "databaseType";
+            this.databaseType.Size = new System.Drawing.Size(0, 13);
+            this.databaseType.TabIndex = 16;
+            // 
+            // installType
+            // 
+            this.installType.AutoSize = true;
+            this.installType.Location = new System.Drawing.Point(130, 112);
+            this.installType.Name = "installType";
+            this.installType.Size = new System.Drawing.Size(0, 13);
+            this.installType.TabIndex = 15;
+            // 
             // ConfirmInstallDialog
             // 
             this.ClientSize = new System.Drawing.Size(494, 361);
+            this.Controls.Add(this.installPath);
+            this.Controls.Add(this.databaseType);
+            this.Controls.Add(this.installType);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -170,5 +233,11 @@
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label installPath;
+        private System.Windows.Forms.Label databaseType;
+        private System.Windows.Forms.Label installType;
     }
 }

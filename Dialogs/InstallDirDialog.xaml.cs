@@ -78,10 +78,10 @@ namespace Setup
                         if (INSTALL_TYPE == "IIS")
                         {
                             installDir = Path.GetFullPath(@"C:\inetpub\blazam");
-                            session[installDirProperty] = installDir;
                         }
+                        session["WixSharp_UI_INSTALLDIR"] = installDir;
 
-
+                        session["INSTALLDIR"] = installDir;
 
                         return installDir;
                     }
@@ -99,6 +99,7 @@ namespace Setup
             set
             {
                 session["WixSharp_UI_INSTALLDIR"] = value;
+                session["INSTALLDIR"] = value;
                 Program.DestinationPath = value;
                 base.NotifyOfPropertyChange(() => installDirProperty);
             }

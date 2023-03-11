@@ -21,7 +21,7 @@ namespace WixSharpSetup
 
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
-            if (InstallationType.installationType == "SERVICE")
+            if (InstallationType.installationType != "SERVICE")
             {
                 Shell.GoNext();
             }
@@ -36,7 +36,7 @@ namespace WixSharpSetup
 
         void next_Click(object sender, EventArgs e)
         {
-            Shell.GoNext();
+            Shell.GoTo<Setup.InstallDirDialog>();
         }
 
         void cancel_Click(object sender, EventArgs e)

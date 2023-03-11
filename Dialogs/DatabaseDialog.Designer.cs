@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.testButton = new System.Windows.Forms.Button();
             this.back = new System.Windows.Forms.Button();
             this.next = new System.Windows.Forms.Button();
@@ -51,9 +52,8 @@
             this.DatabaseBox = new System.Windows.Forms.TextBox();
             this.GuidedPanel = new System.Windows.Forms.Panel();
             this.CustomPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.ConnectionStringBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -119,6 +119,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(503, 57);
             this.panel1.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 105;
+            this.button1.Text = "Custom";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.customButton_Click);
             // 
             // testButton
             // 
@@ -300,6 +310,13 @@
             this.CustomPanel.Size = new System.Drawing.Size(469, 30);
             this.CustomPanel.TabIndex = 25;
             // 
+            // ConnectionStringBox
+            // 
+            this.ConnectionStringBox.Location = new System.Drawing.Point(104, 4);
+            this.ConnectionStringBox.Name = "ConnectionStringBox";
+            this.ConnectionStringBox.Size = new System.Drawing.Size(360, 21);
+            this.ConnectionStringBox.TabIndex = 1;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -308,23 +325,6 @@
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Connection String";
-            // 
-            // ConnectionStringBox
-            // 
-            this.ConnectionStringBox.Location = new System.Drawing.Point(104, 4);
-            this.ConnectionStringBox.Name = "ConnectionStringBox";
-            this.ConnectionStringBox.Size = new System.Drawing.Size(360, 21);
-            this.ConnectionStringBox.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 105;
-            this.button1.Text = "Custom";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.customButton_Click);
             // 
             // DatabaseDialog
             // 

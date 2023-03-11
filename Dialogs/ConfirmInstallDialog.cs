@@ -1,3 +1,4 @@
+using Setup;
 using System;
 using System.Diagnostics;
 using WixSharp;
@@ -7,6 +8,8 @@ namespace WixSharpSetup
 {
     public partial class ConfirmInstallDialog : ManagedForm, IManagedDialog
     {
+        private ISession session;
+
         public ConfirmInstallDialog()
         {
             //NOTE: If this assembly is compiled for v4.0.30319 runtime, it may not be compatible with the MSI hosted CLR.
@@ -19,7 +22,10 @@ namespace WixSharpSetup
         {
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
-
+            session =Runtime.Session;
+            installType.Text = session.Property("INSTALL_TYPE");
+            databaseType.Text = session.Property("DATABASE_TYPE");
+            installPath.Text = session.Property("WixSharp_UI_INSTALLDIR");
             //resolve all Control.Text cases with embedded MSI properties (e.g. 'ProductName') and *.wxl file entries
             base.Localize();
         }
