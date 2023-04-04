@@ -76,8 +76,8 @@ namespace Setup
             project.InstallScope = InstallScope.perMachine;
             project.LicenceFile = SourcePath + "license.rtf";
             project.GUID = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
-            project.UpgradeCode = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
-            project.ProductId = Guid.NewGuid();
+            project.UpgradeCode = Guid.NewGuid();
+            project.ProductId = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
             project.EnableUninstallFullUI();
             // project.GenerateProductGuids();
 
@@ -106,6 +106,7 @@ namespace Setup
                                             .Add<Setup.InstallDirDialog>()
                                           .Add<WixSharpSetup.DatabaseTypeDialog>()
                                             .Add<WixSharpSetup.DatabaseDialog>()
+                                            .Add<WixSharpSetup.DatabaseFilePathDialog>()
                                             .Add<WixSharpSetup.ConfirmInstallDialog>()
                                             .Add<Setup.ProgressDialog>()
                                             .Add<Setup.ExitDialog>();
@@ -123,25 +124,6 @@ namespace Setup
             return project.BuildMsi();
         }
 
-        private static ExePackage AspNetCore6()
-        {
-            string aspLink =
-              @"https://download.visualstudio.microsoft.com/download/pr/0cb3c095-c4f4-4d55-929b-3b4888a7b5f1/4156664d6bfcb46b63916a8cd43f8305/dotnet-hosting-6.0.13-win.exe";
-            string aspInstaller = "dotnet-hosting-win.exe";
-            using (var client = new WebClient())
-            {
-                client.DownloadFile(aspLink, aspInstaller);
-            }
-            ExePackage Net471exe = new ExePackage(aspInstaller)
-            {
-                Compressed = true,
-                Vital = false,
-                Name = aspInstaller,
-                PerMachine = true,
-                Permanent = true,
-            };
-
-            return Net471exe;
-        }
+      
     }
 }

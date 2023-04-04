@@ -1,3 +1,4 @@
+using Caliburn.Micro;
 using Microsoft.Deployment.WindowsInstaller;
 using System;
 using System.Diagnostics;
@@ -24,12 +25,20 @@ namespace WixSharpSetup
             saveFileDialog1.AddExtension= true;
             saveFileDialog1.DefaultExt = ".db";
             saveFileDialog1.CreatePrompt = true;
+            saveFileDialog1.CheckFileExists = false;
+            saveFileDialog1.CheckPathExists = false;
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.Filter = "Sqlite database files| *.db";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.Title = "Choose database path";
+            
             saveFileDialog1.FileName = "database";
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\Blazam";
             if (session.Property("DATABASE_TYPE") == "SQL")
             {
                 Shell.GoTo<DatabaseDialog>();
             }
+
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
 
@@ -56,7 +65,7 @@ namespace WixSharpSetup
         {
             if(saveFileDialog1.ShowDialog()== System.Windows.Forms.DialogResult.OK)
             {
-             
+                filePathTextBox.Text = saveFileDialog1.FileName;
             }
         }
     }

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setup", "Setup.csproj", "{F3D3185A-D216-433C-8734-04493C45992F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLAZAMCommon", "..\BLAZAM\BLAZAMCommon\BLAZAMCommon.csproj", "{8FE6D559-0A81-4C66-9CDF-D08A14E9111B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F3D3185A-D216-433C-8734-04493C45992F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D3185A-D216-433C-8734-04493C45992F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D3185A-D216-433C-8734-04493C45992F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE6D559-0A81-4C66-9CDF-D08A14E9111B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE6D559-0A81-4C66-9CDF-D08A14E9111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE6D559-0A81-4C66-9CDF-D08A14E9111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE6D559-0A81-4C66-9CDF-D08A14E9111B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,7 +37,7 @@
             this.next = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.filePathTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
             this.panel2.SuspendLayout();
@@ -137,12 +137,12 @@
             // 
             this.saveFileDialog1.Title = "Choose Database Folder";
             // 
-            // textBox1
+            // filePathTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(29, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(308, 21);
-            this.textBox1.TabIndex = 11;
+            this.filePathTextBox.Location = new System.Drawing.Point(29, 97);
+            this.filePathTextBox.Name = "filePathTextBox";
+            this.filePathTextBox.Size = new System.Drawing.Size(308, 21);
+            this.filePathTextBox.TabIndex = 11;
             // 
             // button1
             // 
@@ -158,7 +158,7 @@
             // 
             this.ClientSize = new System.Drawing.Size(494, 361);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.filePathTextBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,7 +185,7 @@
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox filePathTextBox;
         private System.Windows.Forms.Button button1;
     }
 }

@@ -7,6 +7,7 @@ namespace WixSharpSetup
 {
     public partial class DatabaseTypeDialog : ManagedForm, IManagedDialog
     {
+        private const string DATABASE_TYPE = "DATABASE_TYPE";
         public ManagedForm Host;
         ISession session => Host?.Runtime.Session;
         public DatabaseTypeDialog()
@@ -24,7 +25,24 @@ namespace WixSharpSetup
             banner.Image = Runtime.Session.GetResourceBitmap("WixUI_Bmp_Banner");
             Text = "[ProductName] Setup";
             //resolve all Control.Text cases with embedded MSI properties (e.g. 'ProductName') and *.wxl file entries
-            session["DATABASE_TYPE"] = "SQLite";
+            if (session[DATABASE_TYPE] == null)
+                session[DATABASE_TYPE] = "SQLite";
+            switch (session[DATABASE_TYPE])
+            {
+                case "SQLite":
+                    sqliteRadioButton.Checked = true;
+                    break;
+                case "SQL":
+                    sqlRadioButton.Checked = true;
+
+                    break;
+
+                case "MYSQL":
+                    mysqlRadioButton.Checked = true;
+                    break;
+
+            }
+
             base.Localize();
         }
 
@@ -35,30 +53,42 @@ namespace WixSharpSetup
 
         void next_Click(object sender, EventArgs e)
         {
-            Shell.GoNext();
+            switch (session[DATABASE_TYPE])
+            {
+                case "SQLite":
+                    Shell.GoTo<DatabaseFilePathDialog>();
+                    break;
+                case "SQL":
+                case "MYSQL":
+                    Shell.GoTo<DatabaseDialog>();
+
+
+                    break;
+
+            }
         }
 
         void cancel_Click(object sender, EventArgs e)
         {
             Shell.Cancel();
         }
-        
+
 
         private void sqliteRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            session["DATABASE_TYPE"] = "SQLite";
+            session[DATABASE_TYPE] = "SQLite";
 
         }
 
         private void sqlRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            session["DATABASE_TYPE"] = "SQL";
+            session[DATABASE_TYPE] = "SQL";
 
         }
 
         private void mysqlRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            session["DATABASE_TYPE"] = "MYSQL";
+            session[DATABASE_TYPE] = "MYSQL";
         }
     }
 }

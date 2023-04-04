@@ -150,10 +150,11 @@
             this.sqliteRadioButton.AutoSize = true;
             this.sqliteRadioButton.Location = new System.Drawing.Point(29, 90);
             this.sqliteRadioButton.Name = "sqliteRadioButton";
-            this.sqliteRadioButton.Size = new System.Drawing.Size(355, 17);
+            this.sqliteRadioButton.Size = new System.Drawing.Size(437, 17);
             this.sqliteRadioButton.TabIndex = 12;
             this.sqliteRadioButton.TabStop = true;
-            this.sqliteRadioButton.Text = "File-Based (SQLite) [Acceptable for organizations of up to 500 users]";
+            this.sqliteRadioButton.Text = "File-Based (SQLite) [Acceptable for installations with up to 20 simultaneous app " +
+    "users]";
             this.sqliteRadioButton.UseVisualStyleBackColor = true;
             this.sqliteRadioButton.CheckedChanged += new System.EventHandler(this.sqliteRadioButton_CheckedChanged);
             // 
